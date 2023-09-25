@@ -1,0 +1,28 @@
+
+.square {
+    width: 130px;
+    height: 130px;
+    background: #233542;
+    border-radius: 5px;
+}
+
+.square button {
+    width:  100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 50px;
+
+
+}
+
+.x {
+
+    color:#f9e239;
+
+}
+
+.o {
+    color:#36abff;
+
+}

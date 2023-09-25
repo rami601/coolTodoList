@@ -1,54 +1,46 @@
-import React ,{useState ,useEffect} from 'react'
+import React , {useState} from 'react'
+import Square from './components/Square'
 import './App.css'
-import Form from './components/Form'
-import Header from './components/Header'
-import TodoList from './components/TodoList'
+import { getByTitle } from '@testing-library/react'
 
 const App = () => {
-  
-
-  const [input , setInput ] = useState("");
-  const [todos , setTodos ] = useState([]);
-  const [editTodo , setEditTodo ] = useState(null);
-  const [total , setTotal ] = useState(2);
-  const [completedItems , setCompletedItems ] = useState(3);
-
-  useEffect(()=>{
-    setTotal( todos.length)
-    const newTodoTest = todos.filter( todo => todo.completed )
-    console.log('new todo test',newTodoTest)
-    setCompletedItems(newTodoTest.length)
+  const [x , setX] = useState(1)
+  const [o , setO] = useState(0)
+  const [winer , setWiner ] = useState(null)
+  const [result , setResult ] = useState([
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
     
 
-  },[todos,setTodos])
+  ])
+
   return (
     <div className='container'>
-      <div className='app-wrapper'>
-        <div>
-          <Header
-          total={total}
-          completedItems={completedItems}
-          />
-        </div>
-        <div>
-          <Form 
-          input={input}
-          setInput={setInput}
-          todos={todos}
-          setTodos={setTodos}
-          editTodo={editTodo}
-          setEditTodo={setEditTodo}
-          />
-        </div>
-        <div>
-          <TodoList 
-          todos={todos}
-          setTodos={setTodos}
-          setEditTodo={setEditTodo}
-          />
-        </div>
+
+      <h1>{
+          winer? (`the winner is ${winer}`): `tic tac toc `
+        }</h1>
+
+      <div className='game-body'>
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={1} x={x} o={o} />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={2} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={3} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={4} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={5} x={x} o={o}   />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={6} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={7} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={8} x={x} o={o}  />
+        <Square winer={winer} setWiner={setWiner} result={result} setResult={setResult} id={9} x={x} o={o}  />
       </div>
 
+      <button onClick={() => window.location.reload()} className='btn'>Reset</button>
+       
 
     </div>
   )
